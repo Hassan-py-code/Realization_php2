@@ -2,7 +2,8 @@
 
 
 <?php    
-
+   session_start();
+   
    $users_list = [ 
       [ 
         "name" => "Ahmed", 
@@ -33,23 +34,41 @@
       ] 
     ];
 
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
+
+
+if($_SERVER["REQUEST_METHOD"] === "POST"){
          
-       if(!empty($_POST["username"])){
-          $userName = $_POST["username"];
-       }
+   $userName = $_POST["username"];
+   $password = $_POST["password"];
 
-       if(!empty($_POST["password"])){
-          $password = $_POST["password"];
-       }
+   foreach($users_list as $El_user){
 
-       for( $i ; $i < count($users_list) ; $i++){
-           echo $userName[$i];
-       }
+       if($El_user["name"] === $userName){
 
-       header("location: login.php");
-       exit();
-    }
+           if($El_user["password"] === $password && $El_user["active"] === true){
+
+               $_SESSION["user_name"] = $userName;
+               $_SESSION["role"] = $El_user["role"];
+
+               header("Location: dashboard.php");
+               exit();
+           }
+
+           elseif($El_user["password"] === $password && $El_user["active"] === false){
+               echo "<p>Account Deactivated</p>";
+               exit();
+           }
+
+           else{
+               echo "<p>Incorrect credentials</p>";
+               exit();
+           }
+       }
+   }
+
+
+   echo "<p>Incorrect credentials</p>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -66,10 +85,10 @@
    <form action="" method="post">
 
        <label for="username">Username</label>
-      <input type="text" name="username">
+      <input type="text" name="username" required>
 
       <label for="password">Password</label>
-      <input type="password" name="password">
+      <input type="password" name="password" required>
       
       <button type="submit" name="login" value="Login"></button>
 
