@@ -35,6 +35,7 @@
     ];
 
 
+   
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
          
@@ -42,10 +43,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
    $password = $_POST["password"];
 
    foreach($users_list as $El_user){
-
+          
        if($El_user["name"] === $userName){
-
-           if($El_user["password"] === $password && $El_user["active"] === true){
+          if($El_user["password"] === $password && $El_user["active"] === true){
 
                $_SESSION["user_name"] = $userName;
                $_SESSION["role"] = $El_user["role"];
@@ -55,20 +55,23 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
            }
 
            elseif($El_user["password"] === $password && $El_user["active"] === false){
-               echo "<p>Account Deactivated</p>";
-               exit();
+              
+              echo  "<p>Account Deactivated</p>";
+              break;
            }
 
-           else{
-               echo "<p>Incorrect credentials</p>";
-               exit();
-           }
        }
+
+
+    }
+
+    
    }
 
 
-   echo "<p>Incorrect credentials</p>";
-}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -96,6 +99,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
    </div>
 
+   
+
 
 </body>
 </html>
+
+
