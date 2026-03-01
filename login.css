@@ -1,10 +1,10 @@
 /* General Reset */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #82abe9;
-    /* display: flex;
+    background-color: #ee67f8;
+    display: flex;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
     height: 100vh;
     margin: 0;
 }
