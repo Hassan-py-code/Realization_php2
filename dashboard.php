@@ -13,7 +13,7 @@
 <html>
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="dasboard.css">
+    <link rel="stylesheet" href="./style/dasboard.css">
 </head>
 <body>
 

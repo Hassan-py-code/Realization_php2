@@ -116,7 +116,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     <title>Login</title>
 
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="./style/login.css">
 
 </head>
 
